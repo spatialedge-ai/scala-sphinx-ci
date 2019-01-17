@@ -22,8 +22,8 @@ RUN \
   dpkg -i sbt-$SBT_VERSION.deb && \
   rm sbt-$SBT_VERSION.deb && \
   apt-get update && \
-  apt-get install sbt && \
-  apt-get install python3-pip && \
+  apt-get -y install sbt && \
+  apt-get -y install python3-pip && \
   pip3 install sphinx sphinx_rtd_theme sphinx-autobuild sphinx_tabs sphinxcontrib-httpdomain && \
   sbt sbtVersion && \
   mkdir project && \
