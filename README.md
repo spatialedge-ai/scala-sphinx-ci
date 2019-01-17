@@ -1,8 +1,11 @@
 CI Pipeline tools for Scala/SBT/Sphinx builds
 =============================================
 
-Build a docker container that and push it to dockerhub. This assumes that you have
-logged into [DockerHub](https://hub.docker.com) using `docker login`.
+A docker image with Scala, SBT and Sphinx (based on [hseeberger's image](https://github.com/hseeberger/scala-sbt).
+We use it as part of our [GitLab](https://gitlab.com) CI pipeline. It builds automatically using 
+[DockerHub](https://cloud.docker.com/u/spatialedge/repository/docker/spatialedge/scala-sphinx-ci).
+
+If you do need to build it locally, use the following commands:
 
 ```bash
 docker build --tag=spatialedge/scala-sphinx-ci:latest .
