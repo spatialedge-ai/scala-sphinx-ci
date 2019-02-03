@@ -2,8 +2,8 @@
 # Scala, sbt and sphinx Dockerfile based on  https://github.com/hseeberger/scala-sbt
 #
 
-# Pull base image
-FROM openjdk:11.0.1
+# Pull base image. We start from Ubuntu because it has docker.io available by default.
+FROM ubuntu:18.04
 
 # Env variables
 ENV SCALA_VERSION 2.12.8
@@ -18,14 +18,13 @@ RUN \
 
 # Install sbt and sphinx
 RUN \
+  apt-get update && \
+  apt-get -y install openjdk-11-jdk-headless && \
   curl -L -o sbt-$SBT_VERSION.deb https://dl.bintray.com/sbt/debian/sbt-$SBT_VERSION.deb && \
   dpkg -i sbt-$SBT_VERSION.deb && \
   rm sbt-$SBT_VERSION.deb && \
   apt-get update && \
-  apt-get -y install docker.io && \
-  apt-get -y install sbt && \
-  apt-get -y install python3-pip && \
-  apt-get -y install docker && \
+  apt-get -y install docker.io python3-pip && \
   pip3 install sphinx sphinx_rtd_theme sphinx-autobuild sphinx_tabs sphinxcontrib-httpdomain && \
   sbt sbtVersion && \
   mkdir project && \
