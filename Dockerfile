@@ -23,7 +23,9 @@ RUN \
   rm sbt-$SBT_VERSION.deb && \
   apt-get update && \
   apt-get -y install sbt && \
+  apt-get -y install docker && \
   apt-get -y install python3-pip && \
+  apt-get -y install docker && \
   pip3 install sphinx sphinx_rtd_theme sphinx-autobuild sphinx_tabs sphinxcontrib-httpdomain && \
   sbt sbtVersion && \
   mkdir project && \
@@ -31,7 +33,8 @@ RUN \
   echo "sbt.version=${SBT_VERSION}" > project/build.properties && \
   echo "case object Temp" > Temp.scala && \
   sbt compile && \
-  rm -r project && rm build.sbt && rm Temp.scala && rm -r target
+  rm -r project && rm build.sbt && rm Temp.scala && rm -r target && \
+  apt-get clean
 
 # Define working directory
 WORKDIR /root
