@@ -23,7 +23,6 @@ RUN \
   rm sbt-$SBT_VERSION.deb && \
   apt-get update && \
   apt-get -y install sbt && \
-  apt-get -y install docker && \
   apt-get -y install python3-pip && \
   apt-get -y install docker && \
   pip3 install sphinx sphinx_rtd_theme sphinx-autobuild sphinx_tabs sphinxcontrib-httpdomain && \
