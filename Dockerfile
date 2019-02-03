@@ -22,6 +22,7 @@ RUN \
   dpkg -i sbt-$SBT_VERSION.deb && \
   rm sbt-$SBT_VERSION.deb && \
   apt-get update && \
+  apt-get -y install docker.io && \
   apt-get -y install sbt && \
   apt-get -y install python3-pip && \
   apt-get -y install docker && \
