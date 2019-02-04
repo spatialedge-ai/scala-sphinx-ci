@@ -8,10 +8,11 @@ FROM ubuntu:18.04
 # Env variables
 ENV SCALA_VERSION 2.12.8
 ENV SBT_VERSION 1.2.8
+ENV JAVA_VERSION 8
 
 RUN \
   apt-get update && \
-  apt-get -y install openjdk-11-jdk-headless curl docker.io python3-pip && \
+  apt-get -y install openjdk-${JAVA_VERSION}-jdk-headless curl docker.io python3-pip && \
   curl -fsL https://downloads.typesafe.com/scala/$SCALA_VERSION/scala-$SCALA_VERSION.tgz | tar xfz - -C /root/ && \
   echo >> /root/.bashrc && \
   echo "export PATH=~/scala-$SCALA_VERSION/bin:$PATH" >> /root/.bashrc && \
